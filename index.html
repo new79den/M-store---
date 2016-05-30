@@ -1,0 +1,396 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Сайт</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script type="text/javascript" src="js/cusel-min-2.5.js"></script>
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 500,
+                values: [75, 300],
+                slide: function (event, ui) {
+                    $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+                }
+            });
+            $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+                    " - $" + $("#slider-range").slider("values", 1));
+
+            /* select style */
+            var params = {
+                changedEl: "select",
+                visRows: 3,
+                scrollArrows: true
+            }
+            cuSel(params);
+        });
+        /*плавный скролл по якорям*/
+        $(document).ready(function () {
+            $(".home-link").on("click", function (event) {
+                //отменяем стандартную обработку нажатия по ссылке
+                event.preventDefault();
+
+                //забираем идентификатор бока с атрибута href
+                var id = $(this).attr('href'),
+
+                //узнаем высоту от начала страницы до блока на который ссылается якорь
+                        top = $(id).offset().top;
+
+                //анимируем переход на расстояние - top за 1500 мс
+                $('body,html').animate({scrollTop: top}, 1500);
+            });
+        });
+
+
+    </script>
+
+
+</head>
+<body>
+<a id="home-link" href="#"></a>
+<!-- Обвёртка -->
+<div id="wrapper">
+    <!-- Верхняя панель -->
+    <div class="panel-top">
+        <div class="center clearfix">
+            <div class="social">
+                <a href="#" class="s-fb">&nbsp;</a>
+                <a href="#" class="s-dribble">&nbsp;</a>
+                <a href="#" class="s-tw">&nbsp;</a>
+                <a href="#" class="s-mail">&nbsp;</a>
+                <a href="#" class="s-vimeo">&nbsp;</a>
+            </div>
+            <div class="basket">
+                <a href="#"><span>Корзина (2)</span></a>
+            </div>
+            <div class="login">
+                <a href="#">Войти</a>
+                <span>/</span>
+                <a href="#">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+    <!-- Шапка сайта -->
+    <div id="header" class="center clearfix">
+        <div id="logo" class="left">
+            <a href="#">
+                <img src="img/logo.png" height="100" width="150" alt="logo">
+            </a>
+        </div>
+        <!-- Навигация -->
+        <ul class="nav right clearfix">
+            <li class="active"><a href="#">Главная</a></li>
+            <li><a href="#">Книги</a></li>
+            <li><a href="#">Канцтовары</a></li>
+            <li><a href="#">Доставка и оплата</a></li>
+            <li><a href="#">Акции</a></li>
+            <li><a href="#">Контакты</a></li>
+        </ul>
+    </div>
+    <!-- // Шапка сайта -->
+    <div id="home">
+        <div class="home-bg">
+            <div class="center">
+                <a href="/" class="link-home">&nbsp;</a>
+                <h2 class="title-home">Книжный интернет - магазин</h2>
+                <p>(044) 359 0 359 (многоканальный) - 7 дней в неделю с 09:00 до 21:00</p>
+            </div>
+        </div>
+    </div>
+    <div class="sorting center">
+        <ul class="s-category clearfix">
+            <li class="active"><a href="#">Все</a></li>
+            <li><a href="#">Психология</a></li>
+            <li><a href="#">Бизнес</a></li>
+            <li><a href="#">Поэзия</a></li>
+            <li><a href="#">Хобби</a></li>
+        </ul>
+        <div class="s-list">
+            <a href="#">
+                <div class="ic-squares"></div>
+            </a>
+            <a href="#">
+                <div class="ic-list"></div>
+            </a>
+        </div>
+        <div class="sel-sorting">
+            <span>Сортировка: </span>
+            <select name="" id="">
+                <option value="new">Сначала новинки</option>
+                <option value="name">По названию</option>
+                <option value="author">По автору</option>
+                <option value="on-sale">По наличию</option>
+                <option value="genre">По жанру</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="middle clearfix center">
+        <div class="sidebar">
+            <h4 class="s-title">Цена<span class="s-title-br"></span></h4>
+            <div class="s-slider">
+                <div id="slider-range"></div>
+
+                <p>
+                    <label for="amount"></label>
+                    <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+                    <button class="btn-bl">Показать</button>
+                </p>
+            </div>
+            <h4 class="s-title">Топ продаж<span class="s-title-br"></span></h4>
+
+            <div class="s-products">
+                <div class="s-products-item clearfix">
+                    <div class="s-products-img">
+                        <a href="#"><img src="img/top.jpg" alt="top-sale"></a>
+                    </div>
+                    <div class="s-products-info">
+                        <h6><a href="#">Игра престолов</a></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <span class="comments"><i class="ic-comment"></i>12 comments</span>
+                    </div>
+                </div>
+            </div>
+            <div class="s-products">
+                <div class="s-products-item clearfix">
+                    <div class="s-products-img">
+                        <a href="#"><img src="img/s-products.png" alt="s-products"></a>
+                    </div>
+                    <div class="s-products-info">
+                        <h6><a href="#">Brave New World</a></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <span class="comments"><i class="ic-comment"></i>10 comments</span>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="s-title">Жанры<span class="s-title-br"></span></h4>
+            <ul class="cat-list">
+                <li><a href="#">Иностранные языки </a><span>(6)</span></li>
+                <li><a href="#">Бизнес. Психология </a><span>(5)</span></li>
+                <li><a href="#">Наука. Технология </a><span>(3)</span></li>
+                <li><a href="#">Классическая проза </a><span>(8)</span></li>
+                <li><a href="#">Поэзия </a><span>(12)</span></li>
+                <li><a href="#">Фантастика </a><span>(7)</span></li>
+                <li><a href="#">Детективы </a><span>(10)</span></li>
+                <li><a href="#">Драма </a><span>(8)</span></li>
+                <li><a href="#">Подарочные издания </a><span>(12)</span></li>
+            </ul>
+
+            <form action="#" class="s-search">
+                <input type="text" placeholder="Поиск...">
+                <input type="submit" value="">
+            </form>
+        </div>
+        <div class="content">
+            <div class="product-catalog clearfix">
+                <div class="products">
+                    <div class="p-img">
+                        <span class="sale">Sale</span>
+                        <a href="#"><img src="img/book1.jpg" height="220" width="180" alt="item"></a>
+                    </div>
+                    <div class="p-footer">
+                        <h6><a href="#">The Non-Designer's Design Book</a> <span>by Artist</span></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <p>Отличное пособие для тех, кто вынужден
+                            периодически заниматься созданием различных образцов "дизайнерского искусства".</p>
+                        <div class="p-footer-price clearfix">
+                            <span class="price">$14.99</span>
+                            <span class="price-new">$8.99</span>
+                            <a href="#" class="right add-cart">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <div class="p-img">
+                        <a href="#"><img src="img/book2.jpg" height="220" width="180" alt="item"></a>
+                    </div>
+                    <div class="p-footer">
+                        <h6><a href="#">Тренинг по нейромаркетингу</a> <span>by Artist</span></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <p>Книга о том, как исследования мозга помогают привлечь внимание покупателя и
+                            увеличить продажи.</p>
+                        <div class="p-footer-price clearfix">
+                            <span class="price-lg">$10.99</span>
+                            <a href="#" class="right add-cart">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <div class="p-img">
+                        <a href="#"><img src="img/book3.jpg" height="220" width="180" alt="item"></a>
+                    </div>
+                    <div class="p-footer">
+                        <h6><a href="#">Волшебные узоры.The Creative Colouring Book</a> <span>by Artist</span></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <p>Эта удивительная книга научит создавать волшебные калейдоскопические узоры.</p>
+                        <div class="p-footer-price clearfix">
+                            <span class="price-lg">$10.99</span>
+                            <a href="#" class="right add-cart">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <div class="p-img">
+                        <span class="sale">Sale</span>
+                        <a href="#"><img src="img/book4.jpg" height="220" width="180" alt="item"></a>
+                    </div>
+                    <div class="p-footer">
+                        <h6><a href="#">Зильбер. Второй дневник сновидений</a> <span>by Artist</span></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <p>Вместе с главной героиней Лией вас ждут путешествия во сне и другие приключения.</p>
+                        <div class="p-footer-price clearfix">
+                            <span class="price">$14.99</span>
+                            <span class="price-new">$8.99</span>
+                            <a href="#" class="right add-cart">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <div class="p-img">
+                        <a href="#"><img src="img/book5.jpg" height="220" width="180" alt="item"></a>
+                    </div>
+                    <div class="p-footer">
+                        <h6><a href="#">Алые паруса</a> <span>by Artist</span></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <p>Повесть Александра Грина Алые паруса - история жизни девочки Ассоль,
+                            в младенчестве потерявшей мать</p>
+                        <div class="p-footer-price clearfix">
+                            <span class="price-lg">$10.99</span>
+                            <a href="#" class="right add-cart">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="products">
+                    <div class="p-img">
+                        <a href="#"><img src="img/book6.jpg" height="220" width="180" alt="item"></a>
+                    </div>
+                    <div class="p-footer">
+                        <h6><a href="#">Коллекция модных идей</a> <span>by Artist</span></h6>
+                        <div class="rate">
+                            <div style="width:80%;"></div>
+                        </div>
+                        <p>В этой книге вы найдете идеи, а их воплощение - за вами. Творите и получайте удовольствие от
+                            процесса!</p>
+                        <div class="p-footer-price clearfix">
+                            <span class="price-lg">$10.99</span>
+                            <a href="#" class="right add-cart">В корзину</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pagination">
+                <ul class="clearfix">
+                    <li class="active"><a href="#">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">6</a></li>
+                    <li><a href="#">&raquo;</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="footer">
+    <a href="#home-link" class="home-link">&nbsp;</a>
+    <div class="center clearfix">
+        <div class="f-about">
+            <h5 class="f-title">О нас</h5>
+            <p>Bookstore.com.ua – интернет-магазин книг, который облегчает поиск и приобретение
+                качественной продукции. Мы ценим наших клиентов и всегда рады новым покупателям.
+                Наша задача – сделать Ваш досуг полезным, незабываемым и приятным.</p>
+            <h5 class="f-title">Присоединяйтесь</h5>
+            <div class="f-social">
+                <a href="#" class="s-fb">&nbsp;</a>
+                <a href="#" class="s-tw">&nbsp;</a>
+                <a href="#" class="s-dribble">&nbsp;</a>
+                <a href="#" class="s-digg">&nbsp;</a>
+                <a href="#" class="s-mail">&nbsp;</a>
+            </div>
+        </div>
+        <div class="f-archives">
+            <h5 class="f-title">Обзоры и советы</h5>
+            <ul class="f-list">
+                <li><a href="#">Блокноты для творческих людей</a></li>
+                <li><a href="#">Топ-15 книг по саморазвитию</a></li>
+                <li><a href="#">Неповторимые рецепты</a></li>
+                <li><a href="#">Как выбрать подарок</a></li>
+            </ul>
+        </div>
+        <div class="f-populars">
+            <h5 class="f-title">Популярное</h5>
+            <div class="s-products-item clearfix">
+                <div class="s-products-img">
+                    <a href="#"><img src="img/top.jpg" alt="top-sale"/></a>
+                </div>
+                <div class="s-products-info">
+                    <h6><a href="#">Игра престолов</a></h6>
+                    <span class="comments"><i class="ic-comment-white"></i> 12 comments</span>
+                </div>
+            </div>
+
+            <div class="s-products-item clearfix">
+                <div class="s-products-img">
+                    <a href="#"><img src="img/top2.jpg" alt="top-sale"/></a>
+                </div>
+                <div class="s-products-info">
+                    <h6><a href="#">Большая книга CSS</a></h6>
+                    <span class="comments"><i class="ic-comment-white"></i> 8 comments</span>
+                </div>
+            </div>
+        </div>
+        <div class="f-search">
+            <h5 class="f-title">Поиск по сайту</h5>
+            <form action="#">
+                <input type="text" class="f-search-inp" placeholder="Поиск ..."/>
+            </form>
+            <h5 class="f-title">Теги</h5>
+            <a href="#" class="tags">литература</a>
+            <a href="#" class="tags">книги</a>
+            <a href="#" class="tags">поэзия</a>
+            <a href="#" class="tags">детектив</a>
+            <a href="#" class="tags">фэнтези</a>
+        </div>
+    </div>
+    <div class="footer-bottom clearfix">
+        <div class="center">
+            <a href="#">Главная</a>
+            <a href="#">Товары</a>
+            <a href="#">Доставка и оплата</a>
+            <a href="#">Контакты</a>
+            <p class="copyright">Bookstore @2016 by PremiumCoding | All Rights Reserved</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
